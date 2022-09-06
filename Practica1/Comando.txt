@@ -1,0 +1,179 @@
+/**Switch0**/
+--- Configuracion de vtp server
+enable
+config t
+vtp domain grupo8
+vtp password grupo8
+vtp mode server
+
+--- VLAN
+enable
+config t
+vlan 18
+name Ventas
+vlan 28
+name Distribucion
+exit
+vlan 38
+name Administracion
+exit
+vlan 48
+name Servidores
+exit
+vlan 99
+name Management&Native
+exit
+vlan 999
+name BlackHole
+exit
+
+--- MODO TRONCAL
+enable
+config t
+interface range fa0/1-2
+switchport mode trunk
+
+
+/**Switch2**/
+--- Configuracion de vtp client
+enable
+config t
+vtp domain grupo8
+vtp password grupo8
+vtp mode client
+
+-- MODO TRONCAL
+enable
+config t
+interface range fa0/1-6
+switchport mode trunk
+
+-- MODO ACCESO
+enable
+config t
+interface fa0/7
+switchport mode access
+switchport access vlan 18
+exit
+interface fa0/8
+switchport mode access
+switchport access vlan 28
+
+
+
+/**Switch3**/
+--- Configuracion de vtp trasparente
+enable
+config t
+vtp domain grupo8
+vtp password grupo8
+vtp mode trasparent
+
+-- MODO TRONCAL
+enable
+config t
+interface range fa0/1-8
+switchport mode trunk
+
+
+/**Switch4**/
+--- Configuracion de vtp client
+enable
+config t
+vtp domain grupo8
+vtp password grupo8
+vtp mode client
+
+-- MODO TRONCAL
+enable
+config t
+interface range fa0/1-3
+switchport mode trunk
+
+-- MODO ACCESO
+enable
+config t
+interface fa0/4
+switchport mode access
+switchport access vlan 48
+exit
+interface fa0/5
+switchport mode access
+switchport access vlan 18
+
+
+/**Switch5**/
+--- Configuracion de vtp client
+enable
+config t
+vtp domain grupo8
+vtp password grupo8
+vtp mode client
+
+-- MODO TRONCAL
+enable
+config t
+interface range fa0/1-8
+switchport mode trunk
+
+-- MODO ACCESO
+enable
+config t
+interface fa0/9
+switchport mode access
+switchport access vlan 28
+exit
+interface fa0/10
+switchport mode access
+switchport access vlan 38
+
+/**Switch6**/
+--- Configuracion de vtp client
+enable
+config t
+vtp domain grupo8
+vtp password grupo8
+vtp mode client
+
+-- MODO TRONCAL
+enable
+config t
+interface range fa0/1-3
+switchport mode trunk
+
+-- MODO ACCESO
+enable
+config t
+interface fa0/4
+switchport mode access
+switchport access vlan 18
+exit
+interface fa0/5
+switchport mode access
+switchport access vlan 48
+
+
+/**Switch7**/
+--- Configuracion de vtp client
+enable
+config t
+vtp domain grupo8
+vtp password grupo8
+vtp mode client
+
+-- MODO TRONCAL
+enable
+config t
+interface range fa0/1-6
+switchport mode trunk
+
+-- MODO ACCESO
+enable
+config t
+interface fa0/7
+switchport mode access
+switchport access vlan 28
+exit
+interface fa0/8
+switchport mode access
+switchport access vlan 38
