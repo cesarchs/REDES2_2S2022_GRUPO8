@@ -170,10 +170,41 @@ switchport mode trunk
 -- MODO ACCESO
 enable
 config t
-interface fa0/7
+interface fa0/8
 switchport mode access
 switchport access vlan 28
 exit
-interface fa0/8
+interface fa0/7
 switchport mode access
 switchport access vlan 38
+
+/**VENTAS - 192.168.88.0**/
+/**PC0**/
+--- IP 192.168.88.1
+/**PC2**/
+--- IP 192.168.88.2
+/**PC5**/
+--- IP 192.168.88.3
+
+
+/**DISTRIBUCION - 192.168.88.64**/
+/**PC1**/
+--- IP 192.168.88.65
+/**PC3**/
+--- IP 192.168.88.66
+/**PC7**/
+--- IP 192.168.88.67
+
+
+/**ADMINISTRACION - 192.168.88.128**/
+/**PC4**/
+--- IP 192.168.88.129
+/**PC6**/
+--- IP 192.168.88.130
+
+
+/**SERVIDOR - 192.168.88.192**/
+/**SERVER1**/
+--- IP 192.168.88.193
+/**SERVER2**/
+--- IP 192.168.88.194
