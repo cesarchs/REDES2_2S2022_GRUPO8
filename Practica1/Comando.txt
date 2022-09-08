@@ -33,6 +33,21 @@ config t
 interface range fa0/1-2
 switchport mode trunk
 
+--- InterVLAN
+config t
+int vlan18
+ip address 192.168.88.4 255.255.255.192
+exit
+int vlan28
+ip address 192.168.88.68 255.255.255.192
+exit
+int vlan38
+ip address 192.168.88.131 255.255.255.192
+exit
+int vlan48
+ip address 192.168.88.195 255.255.255.192
+ip routing
+
 
 /**Switch2**/
 --- Configuracion de vtp client
