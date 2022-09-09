@@ -1,4 +1,6 @@
-/**Switch0**/
+/******************************************************************************/
+						/**Switch0**/
+/******************************************************************************/
 --- Configuracion de vtp server
 enable
 config t
@@ -61,7 +63,41 @@ end
 
 sh spanning-tree summary
 
-/**Switch1**/
+
+--- MANDAR AL HOYO NEGRO (SEGURIDAD)
+//show interface status
+configure terminal
+interface range fa0/3-24
+switchport mode access
+switchport access vlan 999
+end
+configure terminal
+interface range gig0/1-2
+switchport mode access
+switchport access vlan 999
+exit
+
+--- VLAN NATIVA 99 (SEGURIDAD)
+configure terminal
+interface range fa0/1-2show
+switchport trunk native vlan 99
+
+
+--- DESACTIVAR DTP (SEGURIDAD)
+configure terminal
+interface range fa0/1-2
+switchport nonegotiate
+
+
+--- PORT SECURITY (SEGURIDAD)
+configure terminal
+interface range fa0/1-2
+switchport port-security
+
+
+/******************************************************************************/
+						/**Switch1**/
+/******************************************************************************/
 --- Configuracion de vtp client
 enable
 config t
@@ -148,7 +184,65 @@ end
 
 sh spanning-tree summary
 
-/**Switch2**/
+--- MANDAR AL HOYO NEGRO (SEGURIDAD)
+//show interface status
+configure terminal
+interface range fa0/9-24
+switchport mode access
+switchport access vlan 999
+end
+configure terminal
+interface range gig0/1-2
+switchport mode access
+switchport access vlan 999
+exit
+
+--- VLAN NATIVA 99 (SEGURIDAD)
+--show interface trunk
+configure terminal
+interface fa0/1 
+switchport trunk native vlan 99
+exit
+interface fa0/6
+switchport trunk native vlan 99
+exit
+interface port-channel 1
+switchport trunk native vlan 99
+exit
+interface port-channel 3
+switchport trunk native vlan 99
+exit
+
+--- DESACTIVAR DTP (SEGURIDAD)
+configure terminal
+interface fa0/1-6
+switchport nonegotiate
+exit
+interface fa0/6
+switchport nonegotiate
+exit
+
+
+--- PORT SECURITY (SEGURIDAD)
+configure terminal
+interface fa0/1 
+switchport port-security
+exit
+interface fa0/6
+switchport port-security
+exit
+interface port-channel 1
+switchport port-security
+exit
+interface port-channel 3
+switchport port-security
+exit
+
+
+
+/******************************************************************************/
+						/**Switch2**/
+/******************************************************************************/
 --- Configuracion de vtp client
 enable
 config t
@@ -240,7 +334,71 @@ end
 
 sh spanning-tree summary
 
-/**Switch3**/
+--- MANDAR AL HOYO NEGRO (SEGURIDAD)
+//show interface status
+configure terminal
+interface range fa0/9-24
+switchport mode access
+switchport access vlan 999
+end
+configure terminal
+interface range gig0/1-2
+switchport mode access
+switchport access vlan 999
+exit
+
+
+--- VLAN NATIVA 99 (SEGURIDAD)
+--show interface trunk
+configure terminal
+interface fa0/3 
+switchport trunk native vlan 99
+exit
+interface fa0/8
+switchport trunk native vlan 99
+exit
+interface port-channel 1
+switchport trunk native vlan 99
+exit
+interface port-channel 2
+switchport trunk native vlan 99
+exit
+interface port-channel 5
+switchport trunk native vlan 99
+exit
+
+--DESACTIVAR DTP (SEGURIDAD)
+configure terminal
+interface range fa0/1-8
+switchport nonegotiate
+exit
+
+
+--- PORT SECURITY (SEGURIDAD)
+show port-security interface
+configure terminal
+interface fa0/3 
+switchport port-security
+exit
+interface fa0/8
+switchport port-security
+exit
+interface port-channel 1
+switchport port-security
+exit
+interface port-channel 2
+switchport port-security
+exit
+interface port-channel 5
+switchport port-security
+exit
+
+
+
+
+/******************************************************************************/
+						/**Switch3**/
+/******************************************************************************/
 --- Configuracion de vtp client
 enable
 config t
@@ -326,7 +484,53 @@ end
 sh spanning-tree summary
 
 
-/**Switch4**/
+--- MANDAR AL HOYO NEGRO (SEGURIDAD)
+//show interface status
+configure terminal
+interface range fa0/9-24
+switchport mode access
+switchport access vlan 999
+end
+configure terminal
+interface range gig0/1-2
+switchport mode access
+switchport access vlan 999
+exit
+
+--- VLAN NATIVA 99 (SEGURIDAD)
+configure terminal
+interface range fa0/1-2
+switchport trunk native vlan 99
+interface port-channel 2
+switchport trunk native vlan 99
+exit
+interface port-channel 4
+switchport trunk native vlan 99
+exit
+
+--DESACTIVAR DTP (SEGURIDAD)
+configure terminal
+interface range fa0/2-6
+switchport nonegotiate
+exit
+
+--- PORT SUCURITY (SEGURIDAD)
+configure terminal
+interface range fa0/1-2
+switchport port-security
+interface port-channel 2
+switchport port-security
+exit
+interface port-channel 4
+switchport port-security
+exit
+
+
+switchport port-security
+
+/******************************************************************************/
+						/**Switch4**/
+/******************************************************************************/
 --- Configuracion de vtp client
 enable
 config t
@@ -361,7 +565,34 @@ end
 
 sh spanning-tree summary
 
-/**Switch5**/
+--- MANDAR AL HOYO NEGRO (SEGURIDAD)
+//show interface status
+configure terminal
+interface range fa0/6-24
+switchport mode access
+switchport access vlan 999
+end
+configure terminal
+interface range gig0/1-2
+switchport mode access
+switchport access vlan 999
+exit
+
+--DESACTIVAR DTP (SEGURIDAD)
+configure terminal
+interface range fa0/1-3
+switchport nonegotiate
+exit
+
+--- VLAN NATIVA 99 (SEGURIDAD)
+configure terminal
+interface range fa0/1-3
+switchport trunk native vlan 99
+
+
+/******************************************************************************/
+						/**Switch5**/
+/******************************************************************************/
 --- Configuracion de vtp client
 enable
 config t
@@ -466,7 +697,48 @@ end
 
 sh spanning-tree summary
 
-/**Switch6**/
+
+--- MANDAR AL HOYO NEGRO (SEGURIDAD)
+//show interface status
+configure terminal
+interface range fa0/11-24
+switchport mode access
+switchport access vlan 999
+end
+configure terminal
+interface range gig0/1-2
+switchport mode access
+switchport access vlan 999
+exit
+
+
+--DESACTIVAR DTP (SEGURIDAD)
+configure terminal
+interface range fa0/1-8
+switchport nonegotiate
+exit
+
+--- VLAN NATIVA 99 (SEGURIDAD)
+configure terminal
+interface fa0/3 
+switchport trunk native vlan 99
+exit
+interface fa0/6
+switchport trunk native vlan 99
+exit
+interface port-channel 3
+switchport trunk native vlan 99
+exit
+interface port-channel 4
+switchport trunk native vlan 99
+exit
+interface port-channel 5
+switchport trunk native vlan 99
+exit
+
+/******************************************************************************/
+						/**Switch6**/
+/******************************************************************************/
 --- Configuracion de vtp client
 enable
 config t
@@ -510,6 +782,33 @@ spanning-tree mode pvst
 end
 
 sh spanning-tree summary
+
+
+--- MANDAR AL HOYO NEGRO (SEGURIDAD)
+//show interface status
+configure terminal
+interface range fa0/6-24
+switchport mode access
+switchport access vlan 999
+end
+configure terminal
+interface range gig0/1-2
+switchport mode access
+switchport access vlan 999
+exit
+
+--DESACTIVAR DTP (SEGURIDAD)
+configure terminal
+interface range fa0/1-3
+switchport nonegotiate
+exit
+
+--- VLAN NATIVA 99 (SEGURIDAD)
+configure terminal
+interface range fa0/1-3
+switchport trunk native vlan 99
+
+
 
 /**VENTAS - 192.168.88.0**/
 /**PC0**/
