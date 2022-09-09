@@ -49,6 +49,17 @@ int vlan48
 ip address 192.168.88.254 255.255.255.192
 ip routing
 
+--- STP
+enable
+configure terminal
+spanning-tree mode rapid-pvst
+end
+
+configure terminal
+spanning-tree mode pvst
+end
+
+sh spanning-tree summary
 
 /**Switch1**/
 --- Configuracion de vtp client
@@ -101,6 +112,21 @@ interface port-channel 3
 switchport mode trunk
 switchport trunk allowed vlan 1,18,28,38,48,99,999,1002-1005
 
+/*DESACTIVAR LAGP O PAGP*/
+
+enable 
+conf t
+interface range fa0/2-3
+no channel-protocol
+no channel-group
+exit
+no interface port-channel 1
+interface range fa0/4-5
+no channel-protocol
+no channel-group
+exit
+no interface port-channel 3
+end
 
 /*PAGP*/
 enable
@@ -109,10 +135,18 @@ interface range fa0/2-3
 channel-protocol pagp
 channel-group 1 mode desirable
 exit
-interface range fa0/5-6
+interface range fa0/4-5
 channel-protocol pagp
 channel-group 3 mode desirable
 
+
+--- STP
+enable
+configure terminal
+spanning-tree mode rapid-pvst
+end
+
+sh spanning-tree summary
 
 /**Switch2**/
 --- Configuracion de vtp client
@@ -162,21 +196,49 @@ interface port-channel 5
 switchport mode trunk
 switchport trunk allowed vlan 1,18,28,38,48,99,999,1002-1005
 
+/*DESACTIVAR LAGP O PAGP*/
+enable 
+conf t
+interface range fa0/1-2
+no channel-protocol 
+no channel-group 
+exit
+no interface port-channel 1
+interface range fa0/6-7
+no channel-protocol 
+no channel-group 
+exit
+no interface port-channel 2
+interface range fa0/4-5
+no channel-protocol 
+no channel-group 
+exit
+no interface port-channel 5
+end
+
 /*PAGP*/
 enable
 config t
 interface range fa0/1-2
 channel-protocol pagp
-channel-group 1 mode auto
+channel-group 1 mode desirable
 exit
-interface range fa0/3-4
+interface range fa0/6-7
 channel-protocol pagp
-channel-group 2 mode auto
+channel-group 2 mode desirable
 exit
-interface range fa0/5-6
+interface range fa0/4-5
 channel-protocol pagp
-channel-group 5 mode auto
+channel-group 5 mode desirable
 
+
+--- STP
+enable
+configure terminal
+spanning-tree mode rapid-pvst
+end
+
+sh spanning-tree summary
 
 /**Switch3**/
 --- Configuracion de vtp client
@@ -227,10 +289,25 @@ switchport mode trunk
 switchport trunk allowed vlan 1,18,28,38,48,99,999,1002-1005
 exit
 
+/*DESACTIVAR LAGP O PAGP*/
+enable 
+conf t
+interface range fa0/3-4
+no channel-protocol 
+no channel-group 
+exit
+no interface port-channel 2
+interface range fa0/5-6
+no channel-protocol 
+no channel-group 
+exit
+no interface port-channel 4
+end
+
 /*PAGP*/
 enable
 config t
-interface range fa0/2-3
+interface range fa0/3-4
 channel-protocol pagp
 channel-group 2 mode desirable
 exit
@@ -238,6 +315,15 @@ interface range fa0/5-6
 channel-protocol pagp
 channel-group 4 mode desirable
 
+
+
+--- STP
+enable
+configure terminal
+spanning-tree mode rapid-pvst
+end
+
+sh spanning-tree summary
 
 
 /**Switch4**/
@@ -266,6 +352,14 @@ interface fa0/5
 switchport mode access
 switchport access vlan 18
 
+
+--- STP
+enable
+configure terminal
+spanning-tree mode rapid-pvst
+end
+
+sh spanning-tree summary
 
 /**Switch5**/
 --- Configuracion de vtp client
@@ -327,14 +421,34 @@ switchport mode trunk
 switchport trunk allowed vlan 1,18,28,38,48,99,999,1002-1005
 end
 
+/*DESACTIVAR LAGP O PAGP*/
+enable 
+conf t
+interface range fa0/4-5
+no channel-protocol 
+no channel-group 
+exit
+no interface port-channel 5
+interface range fa0/1-2
+no channel-protocol 
+no channel-group 
+exit
+no interface port-channel 3
+interface range fa0/7-8
+no channel-protocol 
+no channel-group 
+exit
+no interface port-channel 4
+end
+
 /*PAGP*/
 enable
 config t
-interface range fa0/3-4
+interface range fa0/4-5
 channel-protocol pagp
 channel-group 5 mode desirable
 exit
-interface range fa0/4-5
+interface range fa0/1-2
 channel-protocol pagp
 channel-group 3 mode desirable
 exit
@@ -342,6 +456,15 @@ interface range fa0/7-8
 channel-protocol pagp
 channel-group 4 mode desirable
 end
+
+
+--- STP
+enable
+configure terminal
+spanning-tree mode rapid-pvst
+end
+
+sh spanning-tree summary
 
 /**Switch6**/
 --- Configuracion de vtp client
@@ -373,6 +496,20 @@ switchport mode access
 switchport access vlan 48
 end
 
+
+--- STP RAPID PVST
+enable
+configure terminal
+spanning-tree mode rapid-pvst
+end
+
+--- STP PVST 
+enable
+configure terminal
+spanning-tree mode pvst
+end
+
+sh spanning-tree summary
 
 /**VENTAS - 192.168.88.0**/
 /**PC0**/
