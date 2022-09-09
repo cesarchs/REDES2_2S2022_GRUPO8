@@ -89,11 +89,6 @@ interface range fa0/1-2
 switchport nonegotiate
 
 
---- PORT SECURITY (SEGURIDAD)
-configure terminal
-interface range fa0/1-2
-switchport port-security
-
 
 /******************************************************************************/
 						/**Switch1**/
@@ -218,26 +213,19 @@ configure terminal
 interface fa0/1-6
 switchport nonegotiate
 exit
-interface fa0/6
-switchport nonegotiate
-exit
-
 
 --- PORT SECURITY (SEGURIDAD)
 configure terminal
-interface fa0/1 
+interface range fa0/7
 switchport port-security
+switchport port-security maximum 5
+switchport port-security mac-address sticky
 exit
-interface fa0/6
+interface range fa0/8
 switchport port-security
+switchport port-security maximum 1
+switchport port-security mac-address sticky
 exit
-interface port-channel 1
-switchport port-security
-exit
-interface port-channel 3
-switchport port-security
-exit
-
 
 
 /******************************************************************************/
@@ -374,27 +362,6 @@ switchport nonegotiate
 exit
 
 
---- PORT SECURITY (SEGURIDAD)
-show port-security interface
-configure terminal
-interface fa0/3 
-switchport port-security
-exit
-interface fa0/8
-switchport port-security
-exit
-interface port-channel 1
-switchport port-security
-exit
-interface port-channel 2
-switchport port-security
-exit
-interface port-channel 5
-switchport port-security
-exit
-
-
-
 
 /******************************************************************************/
 						/**Switch3**/
@@ -510,21 +477,22 @@ exit
 
 --DESACTIVAR DTP (SEGURIDAD)
 configure terminal
-interface range fa0/2-6
+interface range fa0/1-6
 switchport nonegotiate
 exit
 
 --- PORT SUCURITY (SEGURIDAD)
 configure terminal
-interface range fa0/1-2
+interface range fa0/7
 switchport port-security
-interface port-channel 2
-switchport port-security
+switchport port-security maximum 1
+switchport port-security mac-address 0009.7C28.DDC8
 exit
-interface port-channel 4
+interface range fa0/8
 switchport port-security
+switchport port-security maximum 1
+switchport port-security mac-address sticky
 exit
-
 
 switchport port-security
 
@@ -588,6 +556,15 @@ exit
 configure terminal
 interface range fa0/1-3
 switchport trunk native vlan 99
+
+
+--- PORT SUCURITY (SEGURIDAD)
+conf t
+interface range fa0/5
+switchport port-security
+switchport port-security maximum 5
+switchport port-security mac-address sticky
+exit
 
 
 /******************************************************************************/
@@ -736,6 +713,20 @@ interface port-channel 5
 switchport trunk native vlan 99
 exit
 
+
+--- PORT SUCURITY (SEGURIDAD)
+conf t
+interface range fa0/9
+switchport port-security
+switchport port-security maximum 1
+switchport port-security mac-address sticky
+exit
+interface range fa0/10
+switchport port-security
+switchport port-security maximum 1
+switchport port-security mac-address 000A.4189.A6A3
+exit
+
 /******************************************************************************/
 						/**Switch6**/
 /******************************************************************************/
@@ -807,6 +798,14 @@ exit
 configure terminal
 interface range fa0/1-3
 switchport trunk native vlan 99
+
+--- PORT SUCURITY (SEGURIDAD)
+conf t
+interface range fa0/4
+switchport port-security
+switchport port-security maximum 5
+switchport port-security mac-address sticky
+exit
 
 
 
