@@ -1,0 +1,69 @@
+ROUTER 1 VODAFONE
+enable
+CONFIGURE TERMINAL
+interface gigabitEthernet 0/0
+ip address 10.1.1.1 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+INTERFACE SERIAL 0/3/0
+ip address 10.1.3.5 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts hutdown #
+END
+copy running-config startup-config
+
+
+ROUTER 2 KNOLONY
+enable
+CONFIGURE TERMINAL
+interface gigabitEthernet 0/0
+ip address 10.1.1.2 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+END
+copy running-config startup-config
+
+
+ROUTER 3 votafone hub
+ENABLE 
+CONFIGURE TERMINAL
+INTERFACE SERIAL 0/0/0
+ip address 10.1.3.1 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+INTERFACE SERIAL 0/2/0
+ip address 10.1.4.1 255.255.255.252  // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+INTERFACE SERIAL 0/3/1
+ip address 10.1.5.1 255.255.255.252  // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+INTERFACE SERIAL 0/3/0
+ip address 10.1.6.1 255.255.255.252  // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+END
+copy running-config startup-config
+
+ROUTER 7 VODAFONE SPOKE 1
+ENABLE
+CONFIGURE TERMINAL
+INTERFACE SERIAL 0/3/0
+IP ADDRESS 10.1.4.2 255.255.255.252 //  mascara /30 por que solo necesitamos 2 hosts
+NO SHUTDOWN
+END
+copy running-config startup-config  
+ROUTER 8 VODAFONE SPOKE 2
+ENABLE
+CONFIGURE TERMINAL
+INTERFACE SERIAL 0/3/0
+IP ADDRESS 10.1.5.2 255.255.255.252 //  mascara /30 por que solo necesitamos 2 hosts
+NO SHUTDOWN
+END
+copy running-config startup-config 
+ROUTER 9 VODAFONE SPOKE 3
+ENABLE
+CONFIGURE TERMINAL
+INTERFACE SERIAL 0/3/0
+IP ADDRESS 10.1.6.2 255.255.255.252 //  mascara /30 por que solo necesitamos 2 hosts
+NO SHUTDOWN
+END
+copy running-config startup-config 
