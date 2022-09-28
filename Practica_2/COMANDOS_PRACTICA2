@@ -1,17 +1,25 @@
-ROUTER 1 VODAFONE
+########################    ROUTER 1 VODAFONE    ###############################
 enable
 CONFIGURE TERMINAL
 interface gigabitEthernet 0/0
 ip address 10.1.1.1 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
 no shutdown
 exit
+
 INTERFACE SERIAL 0/3/0
-ip address 10.1.3.5 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts hutdown #
+ip address 10.1.3.2 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts hutdown #
 END
+
+configure terminal
+router rip
+version 2
+network 10.1.3.0
+no auto-summary
+
 copy running-config startup-config
 
 
-ROUTER 2 KNOLONY
+########################    ROUTER 2 KNOLONY    ###############################
 enable
 CONFIGURE TERMINAL
 interface gigabitEthernet 0/0
@@ -21,7 +29,7 @@ END
 copy running-config startup-config
 
 
-ROUTER 3 votafone hub
+########################    ROUTER 3 votafone hub    ###############################
 ENABLE 
 CONFIGURE TERMINAL
 INTERFACE SERIAL 0/0/0
@@ -41,29 +49,58 @@ ip address 10.1.6.1 255.255.255.252  // mascara /30 por que solo necesitamos 2 h
 no shutdown
 exit
 END
+
+configure terminal
+router rip
+version 2
+network 10.1.3.0
+no auto-summary
+
+configure terminal
+router ospf 100
+network 10.1.4.0 0.0.0.3 area 0
+
+configure terminal
+router ospf 200
+network 10.1.6.0 0.0.0.3 area 0
+
 copy running-config startup-config
 
-ROUTER 7 VODAFONE SPOKE 1
+########################    ROUTER 7 VODAFONE SPOKE 1    ###############################
 ENABLE
 CONFIGURE TERMINAL
 INTERFACE SERIAL 0/3/0
 IP ADDRESS 10.1.4.2 255.255.255.252 //  mascara /30 por que solo necesitamos 2 hosts
 NO SHUTDOWN
 END
-copy running-config startup-config  
-ROUTER 8 VODAFONE SPOKE 2
-ENABLE
-CONFIGURE TERMINAL
-INTERFACE SERIAL 0/3/0
-IP ADDRESS 10.1.5.2 255.255.255.252 //  mascara /30 por que solo necesitamos 2 hosts
-NO SHUTDOWN
-END
+
+configure terminal
+interface gigabitEthernet 0/0
+ip address 192.168.28.1 255.255.255.128
+no shutdown
+
+configure terminal
+router ospf 100
+network 10.1.4.0 0.0.0.3 area 0
+
 copy running-config startup-config 
-ROUTER 9 VODAFONE SPOKE 3
+
+########################    ROUTER 9 VODAFONE SPOKE 2   ###############################
 ENABLE
 CONFIGURE TERMINAL
 INTERFACE SERIAL 0/3/0
 IP ADDRESS 10.1.6.2 255.255.255.252 //  mascara /30 por que solo necesitamos 2 hosts
 NO SHUTDOWN
 END
+
+configure terminal
+interface gigabitEthernet 0/0
+ip address 192.168.28.128 255.255.255.128
+no shutdown
+
+configure terminal
+router ospf 200
+network 10.1.6.0 0.0.0.3 area 0
+
 copy running-config startup-config 
+
