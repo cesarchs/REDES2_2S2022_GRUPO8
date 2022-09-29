@@ -1,3 +1,12 @@
+########################    ROUTER 0 TELEFONICA    ###############################
+enable
+CONFIGURE TERMINAL
+interface gigabitEthernet 0/0
+ip address 10.1.2.2 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+
+
 ########################    ROUTER 1 VODAFONE    ###############################
 enable
 CONFIGURE TERMINAL
@@ -25,6 +34,22 @@ CONFIGURE TERMINAL
 interface gigabitEthernet 0/0
 ip address 10.1.1.2 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
 no shutdown
+exit
+
+interface gigabitEthernet 0/1
+ip address 10.1.2.1 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+
+INTERFACE SERIAL 0/3/1
+ip address 10.1.7.1 255.255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+
+router ospf 100
+network 10.1.7.0 0.0.0.3 area 0
+exit
+
 END
 copy running-config startup-config
 
@@ -54,19 +79,18 @@ configure terminal
 router rip
 version 2
 network 10.1.3.0
+redistribute ospf 100 metric 15
 no auto-summary
 
 configure terminal
 router ospf 100
 network 10.1.4.0 0.0.0.3 area 0
-
-configure terminal
-router ospf 200
 network 10.1.6.0 0.0.0.3 area 0
+redistribute rip subnets
 
 copy running-config startup-config
 
-########################    ROUTER 7 VODAFONE SPOKE 1    ###############################
+########################    ROUTER 4 VODAFONE SPOKE 1    ###############################
 ENABLE
 CONFIGURE TERMINAL
 INTERFACE SERIAL 0/3/0
@@ -82,10 +106,11 @@ no shutdown
 configure terminal
 router ospf 100
 network 10.1.4.0 0.0.0.3 area 0
+network 192.168.28.0 0.0.0.127 area 0 
 
 copy running-config startup-config 
 
-########################    ROUTER 9 VODAFONE SPOKE 2   ###############################
+########################    ROUTER 5 VODAFONE SPOKE 2   ###############################
 ENABLE
 CONFIGURE TERMINAL
 INTERFACE SERIAL 0/3/0
@@ -99,8 +124,82 @@ ip address 192.168.28.128 255.255.255.128
 no shutdown
 
 configure terminal
-router ospf 200
+router ospf 100
 network 10.1.6.0 0.0.0.3 area 0
+network 192.168.28.128 0.0.0.127 area 0 
 
 copy running-config startup-config 
 
+
+
+
+########################    ROUTER 6    ###############################
+enable
+configure terminal
+INTERFACE SERIAL 0/3/0
+ip address 10.1.7.2 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+
+INTERFACE SERIAL 0/3/1
+ip address 10.1.8.1 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+
+INTERFACE SERIAL 0/2/0
+ip address 10.1.9.1 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+
+router ospf 100
+network 10.1.7.0 0.0.0.3 area 0
+redistribute eigrp 100 subnets
+exit
+
+router eigrp 100
+network 10.1.8.0 0.0.0.3
+network 10.1.9.0 0.0.0.3
+redistribute ospf 100 metric 15 150 255 255 1500
+exit
+
+########################    ROUTER 7    ###############################
+enable
+configure terminal
+INTERFACE SERIAL 0/3/0
+ip address 10.1.8.2 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+
+interface gigabitEthernet 0/0
+ip address 192.168.58.1 255.255.255.128
+no shutdown
+exit
+interface gigabitEthernet 0/1
+no shutdown
+exit
+
+router eigrp 100
+network 10.1.8.0 0.0.0.3
+network 192.168.58.0 0.0.0.127
+exit
+
+########################    ROUTER 8    ###############################
+enable
+configure terminal
+INTERFACE SERIAL 0/3/0
+ip address 10.1.9.2 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
+no shutdown
+exit
+
+interface gigabitEthernet 0/0
+ip address 192.168.58.129 255.255.255.128
+no shutdown
+exit
+interface gigabitEthernet 0/1
+no shutdown
+exit
+
+router eigrp 100
+network 10.1.9.0 0.0.0.3
+network 192.168.58.128 0.0.0.127
+exit
