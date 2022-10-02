@@ -1,10 +1,13 @@
 ########################    ROUTER 0 TELEFONICA    ###############################
 enable
-CONFIGURE TERMINAL
+configure terminal
 interface gigabitEthernet 0/0
-ip address 10.1.2.2 255.255.255.252 // mascara /30 por que solo necesitamos 2 hosts 
+ip address 10.1.10.1 255.255.255.252 
 no shutdown
 exit
+interface serial 0/3/0
+ip address 10.1.10.1 255.255.255.252
+no shutdown
 
 
 ########################    ROUTER 1 VODAFONE    ###############################
@@ -203,3 +206,153 @@ router eigrp 100
 network 10.1.9.0 0.0.0.3
 network 192.168.58.128 0.0.0.127
 exit
+
+
+########################    ROUTER 11 TELEFONICA  ###############################
+enable
+configure terminal
+interface serial 0/2/0
+ip address 10.1.10.2 255.255.255.252
+no shutdown
+exit
+interface serial 0/3/0
+ip address 10.1.11.1 255.255.255.252
+no shutdown
+exit
+interface serial 0/3/1
+ip address 10.1.12.1 255.255.255.252
+no shutdown
+
+
+########################    ROUTER 9 TELEFONICA  ###############################
+enable
+configure terminal
+interface serial 0/2/0
+ip address 10.1.11.2 255.255.255.252
+no shutdown
+exit
+interface gigabitEthernet 0/1
+ip address 10.1.15.1 255.255.255.252
+no shutdown
+exit
+interface gigabitEthernet 0/0
+ip address 10.1.13.1 255.255.255.252
+no shutdown
+exit
+
+########################    ROUTER 10 TELEFONICA  ###############################
+enable
+configure terminal
+interface serial 0/2/0
+ip address 10.1.12.2 255.255.255.252
+no shutdown
+exit
+interface gigabitEthernet 0/1
+ip address 10.1.14.1 255.255.255.252
+no shutdown
+exit
+interface gigabitEthernet 0/0
+ip address 10.1.16.1 255.255.255.252
+no shutdown
+exit
+
+########################    SWITCH 12 TELEFONICA  ###############################
+enable
+configure terminal
+interface fastEthernet 0/1
+no switchport
+ip address 10.1.13.2 255.255.255.252
+no shutdown
+exit
+interface fastEthernet 0/7
+no switchport
+ip address 10.1.14.2 255.255.255.252
+no shutdown
+exit
+vtp domain grupo8
+vtp password grupo8
+vtp version 2
+vtp mode server
+exit
+vlan 10 
+name Empresarial
+exit
+vlan 20
+name Economico 
+exit
+interface range fa0/5-6
+channel-protocol lacp
+channel-group 1 mode active
+exit
+interface port-channel 1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,1002-1005
+exit
+interface range fa0/2-4
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,1002-1005
+exit
+interface vlan10
+ip address 192.168.88.1 255.255.255.128
+no shutdown
+exit
+interface vlan20
+ip address 192.168.88.129 255.255.255.128
+no shutdown
+exit
+
+########################    SWITCH 13 TELEFONICA  ###############################
+enable
+configure terminal
+interface fastEthernet 0/1
+no switchport
+ip address 10.1.16.2 255.255.255.252
+no shutdown
+exit
+interface fastEthernet 0/7
+no switchport
+ip address 10.1.15.2 255.255.255.252
+no shutdown
+exit
+vtp domain grupo8
+vtp password grupo8
+vtp version 2
+vtp mode client
+exit
+interface range fa0/5-6
+channel-protocol lacp
+channel-group 1 mode active
+exit
+interface port-channel 1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,1002-1005
+exit
+interface range fa0/2-4
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 1,10,20,1002-1005
+exit
+interface vlan10
+ip address 192.168.88.1 255.255.255.128
+no shutdown
+exit
+interface vlan20
+ip address 192.168.88.129 255.255.255.128
+no shutdown
+
+########################    SWITCH TELEFONICA  ###############################
+enable 
+configure terminal
+vtp domain grupo8
+vtp password grupo8
+vtp version 2
+vtp mode client
+exit
+interface fa0/3 
+switchport mode access
+switchport access vlan 20
+exit
+
