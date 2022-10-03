@@ -132,6 +132,18 @@ version 2
 network 10.1.4.0
 network 192.168.28.0
 no auto-summary
+exit
+
+
+# EDUCACION
+access-list 1 permit 192.168.58.128 0.0.0.127 # funcion publica
+access-list 1 permit 192.168.58.0 0.0.0.127 # salud
+access-list 1 deny 192.168.28.128 0.0.0.127 # cultura y deportes
+access-list 1 deny 192.168.88.0 0.0.0.127 # empresarial
+access-list 1 deny 192.168.88.128 0.0.0.127 #economico
+
+interface g0/0
+ip access-group 1 out
 
 copy running-config startup-config 
 
@@ -154,6 +166,17 @@ version 2
 network 10.1.6.0
 network 192.168.28.128
 no auto-summary
+exit
+
+# CULTURA Y DEPORTE
+access-list 1 permit 192.168.58.128 0.0.0.127 # funcion publica
+access-list 1 deny 192.168.58.0 0.0.0.127 # salud
+access-list 1 deny 192.168.28.0 0.0.0.127 # educacion
+access-list 1 deny 192.168.88.0 0.0.0.127 # empresarial
+access-list 1 deny 192.168.88.128 0.0.0.127 #economico
+
+interface g0/0
+ip access-group 1 out
 
 copy running-config startup-config 
 
@@ -210,6 +233,16 @@ network 10.1.8.0 0.0.0.3
 network 192.168.58.0 0.0.0.127
 exit
 
+# SALUD
+access-list 1 permit 192.168.58.128 0.0.0.127 # funcion publica
+access-list 1 permit 192.168.28.0 0.0.0.127 # educacion
+access-list 1 deny 192.168.28.128 0.0.0.127 # cultura y deportes
+access-list 1 deny 192.168.88.0 0.0.0.127 # empresarial
+access-list 1 deny 192.168.88.128 0.0.0.127 #economico
+
+interface g0/0
+ip access-group 1 out
+
 ########################    ROUTER 8    ###############################
 enable
 configure terminal
@@ -231,6 +264,15 @@ network 10.1.9.0 0.0.0.3
 network 192.168.58.128 0.0.0.127
 exit
 
+# FUNCION PUBLICA
+access-list 1 permit 192.168.28.0 0.0.0.127 # educacion
+access-list 1 permit 192.168.28.128 0.0.0.127 # cultura y deportes
+access-list 1 permit 192.168.58.0 0.0.0.127 # salud
+access-list 1 deny 192.168.88.0 0.0.0.127 # empresarial
+access-list 1 deny 192.168.88.128 0.0.0.127 #economico
+
+interface g0/0
+ip access-group 1 out
 
 ########################    ROUTER 11 TELEFONICA  ###############################
 enable
@@ -368,6 +410,17 @@ network 192.168.88.0 0.0.0.127
 network 192.168.88.128 0.0.0.127
 exit
 
+# EMPRESARIAL Y ECONOMICO
+access-list 1 permit 192.168.88.128 0.0.0.127 #economico
+access-list 1 permit 192.168.88.0 0.0.0.127 # empresarial
+access-list 1 deny 192.168.28.0 0.0.0.127 # educacion
+access-list 1 deny 192.168.28.128 0.0.0.127 # cultura y deportes
+access-list 1 deny 192.168.58.0 0.0.0.127 # salud
+access-list 1 deny 192.168.58.128 0.0.0.127 # funcion publica
+
+interface range f0/2-4
+ip access-group 1 out
+
 ########################    SWITCH 13 TELEFONICA  ###############################
 enable
 configure terminal
@@ -415,6 +468,17 @@ network 10.1.16.0 0.0.0.3
 network 192.168.88.0 0.0.0.127
 network 192.168.88.128 0.0.0.127
 exit
+
+# EMPRESARIAL Y ECONOMICO
+access-list 1 permit 192.168.88.128 0.0.0.127 #economico
+access-list 1 permit 192.168.88.0 0.0.0.127 # empresarial
+access-list 1 deny 192.168.28.0 0.0.0.127 # educacion
+access-list 1 deny 192.168.28.128 0.0.0.127 # cultura y deportes
+access-list 1 deny 192.168.58.0 0.0.0.127 # salud
+access-list 1 deny 192.168.58.128 0.0.0.127 # funcion publica
+
+interface range f0/2-4
+ip access-group 1 out
 
 ########################    SWITCHES TELEFONICA  ###############################
 enable 
