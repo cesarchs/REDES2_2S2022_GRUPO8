@@ -291,14 +291,9 @@ no shutdown
 exit
 router eigrp 100
 network 10.1.10.0 0.0.0.3
-redistribute rip metric 15 1 255 255 1500 
+network 10.1.11.0 0.0.0.3
+network 10.1.12.0 0.0.0.3
 exit
-router rip
-version 2
-network 10.1.11.0
-network 10.1.12.0
-redistribute eigrp 100 metric 15 
-no auto-summary
 
 
 ########################    ROUTER 9 TELEFONICA  ###############################
@@ -318,13 +313,13 @@ no shutdown
 exit
 router rip
 version 2
-network 10.1.11.0
+network 10.1.13.0
+network 10.1.15.0
 no auto-summary
 redistribute eigrp 100 metric 15
 exit
 router eigrp 100
-network 10.1.13.0 0.0.0.3
-network 10.1.15.0 0.0.0.3
+network 10.1.11.0 0.0.0.3
 redistribute rip metric 15 150 255 255 1500
 exit
 
@@ -346,13 +341,13 @@ no shutdown
 exit
 router rip
 version 2
-network 10.1.12.0
+network 10.1.14.0
+network 10.1.16.0
 no auto-summary
 redistribute eigrp 100 metric 15
 exit
 router eigrp 100
-network 10.1.14.0 0.0.0.3
-network 10.1.16.0 0.0.0.3
+network 10.1.12.0 0.0.0.3
 redistribute rip metric 15 150 255 255 1500
 exit
 
@@ -403,11 +398,13 @@ ip address 192.168.88.129 255.255.255.128
 no shutdown
 exit
 ip routing
-router eigrp 100
-network 10.1.13.0 0.0.0.3
-network 10.1.14.0 0.0.0.3
-network 192.168.88.0 0.0.0.127
-network 192.168.88.128 0.0.0.127
+router rip
+version 2
+network 10.1.13.0
+network 10.1.14.0
+network 192.168.88.0
+network 192.168.88.128
+no auto-summary
 exit
 
 # EMPRESARIAL Y ECONOMICO
@@ -462,11 +459,13 @@ ip address 192.168.88.129 255.255.255.128
 no shutdown
 exit
 ip routing
-router eigrp 100
-network 10.1.15.0 0.0.0.3
-network 10.1.16.0 0.0.0.3
-network 192.168.88.0 0.0.0.127
-network 192.168.88.128 0.0.0.127
+router rip
+version 2
+network 10.1.15.0
+network 10.1.16.0
+network 192.168.88.0
+network 192.168.88.128
+no auto-summary
 exit
 
 # EMPRESARIAL Y ECONOMICO
