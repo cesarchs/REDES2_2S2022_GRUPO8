@@ -8,4 +8,4 @@
 | Marcos     Enrique   Curtidor  Sagui      | 201900874 |
 
 ## Topología Completa
-![](https://github.com/cesarchs/REDES2_2S2022_GRUPO8/tree/main/Practica_2/topo.png)
+![](https://github.com/cesarchs/REDES2_2S2022_GRUPO8/blob/main/Practica_2/topo.png)
