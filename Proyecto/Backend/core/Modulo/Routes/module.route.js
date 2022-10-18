@@ -3,6 +3,7 @@ export class ModuloRoutes{
   constructor(express, model){
     this.router = express.Router();
     this.model = model;
+    this.setRoute();
   }
 
   setRoute(){

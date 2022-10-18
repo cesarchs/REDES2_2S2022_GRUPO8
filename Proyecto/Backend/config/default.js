@@ -13,6 +13,6 @@ export const config={
     name: process.env.NAME || 'api-node'
   },
   mongo:{
-    uri: process.env.URI || ''
+    uri: process.env.URI || 'mongodb://localhost:27017/REDES2_PROY'
   }
 }

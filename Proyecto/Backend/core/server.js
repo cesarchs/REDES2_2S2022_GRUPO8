@@ -2,8 +2,9 @@ import express from "express";
 import cors from "cors";
 
 
-import { moduloModule } from "./Modulo";
-import { mongodb } from "../dbConnection/dbmongoConection";
+import { moduloModule } from "./Modulo/index.js";
+import { mongodb } from "../dbConnection/dbmongoConection.js";
+
 
 export class Server{
   constructor(config){
@@ -11,6 +12,7 @@ export class Server{
     this._hostname = config.api.hostname;
     this._port = config.api.port;
     this._name = config.api.name;
+    this._mongo = mongodb();
     this.setMiddlewares();
     this.setRoutes();
   }

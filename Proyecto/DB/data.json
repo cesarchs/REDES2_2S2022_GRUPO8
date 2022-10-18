@@ -1,127 +1,153 @@
 [
   {
+    "tipo": 1,
     "img": "https://cdn.pixabay.com/photo/2016/02/10/21/59/landscape-1192669__340.jpg"
   },
   {
+    "tipo": 1,
     "img": "https://astelus.com/wp-content/viajes/Lago-Moraine-Parque-Nacional-Banff-Alberta-Canada.jpg"
   },
   {
+    "tipo": 1,
     "img": "https://concepto.de/wp-content/uploads/2015/03/paisaje-800x409.jpg"
   },
   {
-   "nombreAdmin": "Presidente",
-   "descripcion": "Es el presidente de la compania",
-   "img": "https://img.freepik.com/vector-premium/perfil-hombre-dibujos-animados_18591-58482.jpg?w=2000"
+    "tipo": 2,
+    "nombreAdmin": "Presidente",
+    "descripcion": "Es el presidente de la compania",
+    "img": "https://img.freepik.com/vector-premium/perfil-hombre-dibujos-animados_18591-58482.jpg?w=2000"
   },
   {
-   "nombreAdmin": "VicePresidente",
-   "descripcion": "Es el vicepresidente de la compania",
-   "img": "https://img.freepik.com/vector-premium/perfil-hombre-dibujos-animados_18591-58484.jpg?w=2000"
+    "tipo": 2,
+    "nombreAdmin": "VicePresidente",
+    "descripcion": "Es el vicepresidente de la compania",
+    "img": "https://img.freepik.com/vector-premium/perfil-hombre-dibujos-animados_18591-58484.jpg?w=2000"
   },
   {
-   "nombreAdmin": "Ministerio de Seguridad",
-   "descripcion": "Es el encargado de la seguridad y administra todo respecto a la seguridad",
-   "img": "https://img.freepik.com/vector-premium/perfil-empresario-dibujos-animados_18591-58481.jpg?w=2000"
+    "tipo": 2,
+    "nombreAdmin": "Ministerio de Seguridad",
+    "descripcion": "Es el encargado de la seguridad y administra todo respecto a la seguridad",
+    "img": "https://img.freepik.com/vector-premium/perfil-empresario-dibujos-animados_18591-58481.jpg?w=2000"
   },
   {
+    "tipo": 3,
     "nombre": "Cesar Leonel Chamale Sican",
     "rol": "Coordinador",
     "carnet": "201700634",
     "curso": "REDES 2"
   },
   {
+    "tipo": 3,
     "nombre": "Marcos Enrique Curtidor Sagui",
     "rol": "VicePresidente",
     "carnet": "201900874",
     "curso": "REDES 2"
   },
   {
+    "tipo": 3,
     "nombre": "Julio Enrique Wu Chiu",
     "rol": "Seguridad",
     "carnet": "201906180",
     "curso": "REDES 2"
   },
   {
+    "tipo": 3,
     "nombre": "Leonardo Roney Martínez Maldonado",
     "rol": "Vocal :v",
     "carnet": "201780044",
     "curso": "REDES 2"
   },
   {
+    "tipo": 4,
     "nombreFuncion": "Fun1",
     "descripcion": "Funcion 1 y solo xd",
     "img": "https://cdn.pixabay.com/photo/2016/02/10/21/59/landscape-1192669__340.jpg"
   },
   {
+    "tipo": 4,
     "nombreFuncion": "Fun2",
     "descripcion": "Funcion 2 y solo xd",
     "img": "https://cdn.pixabay.com/photo/2016/02/10/21/59/landscape-1192669__340.jpg"
   },
   {
+    "tipo": 4,
     "nombreFuncion": "Fun3",
     "descripcion": "Funcion 3 y solo xd",
     "img": "https://cdn.pixabay.com/photo/2016/02/10/21/59/landscape-1192669__340.jpg"
   },
   {
+    "tipo": 4,
     "nombreFuncion": "Fun4",
     "descripcion": "Funcion 4 y solo xd",
     "img": "https://cdn.pixabay.com/photo/2016/02/10/21/59/landscape-1192669__340.jpg"
   },
   {
+    "tipo": 5,
     "nombreNoticia": "Noticia1",
     "descripcion": "Se anucia que ya casi se acaba el semestre"
   },
   {
+    "tipo": 5,
     "nombreNoticia": "Noticia2",
     "descripcion": "Se informa que el parcial 3 nos jodio xd"
   },
   {
+    "tipo": 5,
     "nombreNoticia": "Noticia3",
     "descripcion": "Sale en vacas"
   },
   {
+    "tipo": 6,
     "cantidad": 8,
-    "tipo": "USD",
+    "moneda": "USD",
     "Fecha": "17/10/2022"
   },
   {
+    "tipo": 6,
     "cantidad": 16,
-    "tipo": "USD",
+    "moneda": "USD",
     "Fecha": "20/10/2022"
   },
   {
+    "tipo": 6,
     "cantidad": 20,
-    "tipo": "USD",
+    "moneda": "USD",
     "Fecha": "25/10/2022"
   },
   {
+    "tipo": 6,
     "cantidad": 10,
-    "tipo": "Euro",
+    "moneda": "Euro",
     "Fecha": "17/10/2022"
   },
   {
+    "tipo": 6,
     "cantidad": 18,
-    "tipo": "Euro",
+    "moneda": "Euro",
     "Fecha": "20/10/2022"
   },
   {
+    "tipo": 6,
     "cantidad": 25,
-    "tipo": "Euro",
+    "moneda": "Euro",
     "Fecha": "25/10/2022"
   },
   {
+    "tipo": 6,
     "cantidad": 5,
-    "tipo": "UcronCoin",
+    "moneda": "UcronCoin",
     "Fecha": "17/10/2022"
   },
   {
+    "tipo": 6,
     "cantidad": 17,
-    "tipo": "UcronCoin",
+    "moneda": "UcronCoin",
     "Fecha": "20/10/2022"
   },
   {
+    "tipo": 6,
     "cantidad": 22,
-    "tipo": "UcronCoin",
+    "moneda": "UcronCoin",
     "Fecha": "25/10/2022"
   }
 ]

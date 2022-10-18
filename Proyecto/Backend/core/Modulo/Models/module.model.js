@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+/*
 const homeSchema = new mongoose.Schema({
   img: {type: String, required: true}
 });
@@ -35,12 +35,19 @@ const desarrolloSchema = new mongoose.Schema({
 });
 
 
-const homeModel = mongoose.model('REDES2_PROY', homeSchema);
-const adminModel = mongoose.model('REDES2_PROY', adminSchema);
-const devModel = mongoose.model('REDES2_PROY', devSchema);
-const funPulicModel = mongoose.model('REDES2_PROY', funPublicSchema);
-const noticiaModel = mongoose.model('REDES2_PROY', noticiaSchema);
-const desarrolloModel = mongoose.model('REDES2_PROY', desarrolloSchema);
+const homeModel = mongoose.model('dataProyecto', homeSchema);
+const adminModel = mongoose.model('dataProyecto', adminSchema);
+const devModel = mongoose.model('dataProyecto', devSchema);
+const funPulicModel = mongoose.model('dataProyecto', funPublicSchema);
+const noticiaModel = mongoose.model('dataProyecto', noticiaSchema);
+const desarrolloModel = mongoose.model('dataProyecto', desarrolloSchema);*/
+
+const dataSchema = new mongoose.Schema({
+  tipo: {type: Number}
+});
+
+const dataModel = mongoose.model('informacion', dataSchema);
+
 
 export class ModuleModels{
   constructor(){
@@ -48,32 +55,32 @@ export class ModuleModels{
   }
 
   async home(){
-    let result = await homeModel.find({});
+    let result = await dataModel.find({tipo: 1});
     return result;
   }
 
   async admin(){
-    let result = await adminModel.find({});
+    let result = await dataModel.find({tipo: 2});
     return result;
   }
 
   async dev(){
-    let result = await devModel.find({});
+    let result = await dataModel.find({tipo: 3});
     return result;
   }
   
   async funPublic(){
-    let result = await funPulicModel.find({});
+    let result = await dataModel.find({tipo: 4});
     return result;
   }
   
   async noticia(){
-    let result = await noticiaModel.find({});
+    let result = await dataModel.find({tipo: 5});
     return result;
   }
 
   async desarrollo(){
-    let result = await desarrolloModel.find({});
+    let result = await dataModel.find({tipo: 6});
     return result;
   }
 
