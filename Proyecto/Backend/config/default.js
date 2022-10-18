@@ -13,6 +13,6 @@ export const config={
     name: process.env.NAME || 'api-node'
   },
   mongo:{
-    uri: ''
+    uri: process.env.URI || ''
   }
 }

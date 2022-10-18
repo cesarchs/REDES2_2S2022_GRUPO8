@@ -5,7 +5,7 @@ const homeSchema = new mongoose.Schema({
 });
 
 const adminSchema = new mongoose.Schema({
-  nombre: {type: String, required: true},
+  nombreAdmin: {type: String, required: true},
   descripcion: {type: String, required: true},
   img: {type: String, required: true}
 });

@@ -1,0 +1,127 @@
+[
+  {
+    "img": "https://cdn.pixabay.com/photo/2016/02/10/21/59/landscape-1192669__340.jpg"
+  },
+  {
+    "img": "https://astelus.com/wp-content/viajes/Lago-Moraine-Parque-Nacional-Banff-Alberta-Canada.jpg"
+  },
+  {
+    "img": "https://concepto.de/wp-content/uploads/2015/03/paisaje-800x409.jpg"
+  },
+  {
+   "nombreAdmin": "Presidente",
+   "descripcion": "Es el presidente de la compania",
+   "img": "https://img.freepik.com/vector-premium/perfil-hombre-dibujos-animados_18591-58482.jpg?w=2000"
+  },
+  {
+   "nombreAdmin": "VicePresidente",
+   "descripcion": "Es el vicepresidente de la compania",
+   "img": "https://img.freepik.com/vector-premium/perfil-hombre-dibujos-animados_18591-58484.jpg?w=2000"
+  },
+  {
+   "nombreAdmin": "Ministerio de Seguridad",
+   "descripcion": "Es el encargado de la seguridad y administra todo respecto a la seguridad",
+   "img": "https://img.freepik.com/vector-premium/perfil-empresario-dibujos-animados_18591-58481.jpg?w=2000"
+  },
+  {
+    "nombre": "Cesar Leonel Chamale Sican",
+    "rol": "Coordinador",
+    "carnet": "201700634",
+    "curso": "REDES 2"
+  },
+  {
+    "nombre": "Marcos Enrique Curtidor Sagui",
+    "rol": "VicePresidente",
+    "carnet": "201900874",
+    "curso": "REDES 2"
+  },
+  {
+    "nombre": "Julio Enrique Wu Chiu",
+    "rol": "Seguridad",
+    "carnet": "201906180",
+    "curso": "REDES 2"
+  },
+  {
+    "nombre": "Leonardo Roney Martínez Maldonado",
+    "rol": "Vocal :v",
+    "carnet": "201780044",
+    "curso": "REDES 2"
+  },
+  {
+    "nombreFuncion": "Fun1",
+    "descripcion": "Funcion 1 y solo xd",
+    "img": "https://cdn.pixabay.com/photo/2016/02/10/21/59/landscape-1192669__340.jpg"
+  },
+  {
+    "nombreFuncion": "Fun2",
+    "descripcion": "Funcion 2 y solo xd",
+    "img": "https://cdn.pixabay.com/photo/2016/02/10/21/59/landscape-1192669__340.jpg"
+  },
+  {
+    "nombreFuncion": "Fun3",
+    "descripcion": "Funcion 3 y solo xd",
+    "img": "https://cdn.pixabay.com/photo/2016/02/10/21/59/landscape-1192669__340.jpg"
+  },
+  {
+    "nombreFuncion": "Fun4",
+    "descripcion": "Funcion 4 y solo xd",
+    "img": "https://cdn.pixabay.com/photo/2016/02/10/21/59/landscape-1192669__340.jpg"
+  },
+  {
+    "nombreNoticia": "Noticia1",
+    "descripcion": "Se anucia que ya casi se acaba el semestre"
+  },
+  {
+    "nombreNoticia": "Noticia2",
+    "descripcion": "Se informa que el parcial 3 nos jodio xd"
+  },
+  {
+    "nombreNoticia": "Noticia3",
+    "descripcion": "Sale en vacas"
+  },
+  {
+    "cantidad": 8,
+    "tipo": "USD",
+    "Fecha": "17/10/2022"
+  },
+  {
+    "cantidad": 16,
+    "tipo": "USD",
+    "Fecha": "20/10/2022"
+  },
+  {
+    "cantidad": 20,
+    "tipo": "USD",
+    "Fecha": "25/10/2022"
+  },
+  {
+    "cantidad": 10,
+    "tipo": "Euro",
+    "Fecha": "17/10/2022"
+  },
+  {
+    "cantidad": 18,
+    "tipo": "Euro",
+    "Fecha": "20/10/2022"
+  },
+  {
+    "cantidad": 25,
+    "tipo": "Euro",
+    "Fecha": "25/10/2022"
+  },
+  {
+    "cantidad": 5,
+    "tipo": "UcronCoin",
+    "Fecha": "17/10/2022"
+  },
+  {
+    "cantidad": 17,
+    "tipo": "UcronCoin",
+    "Fecha": "20/10/2022"
+  },
+  {
+    "cantidad": 22,
+    "tipo": "UcronCoin",
+    "Fecha": "25/10/2022"
+  }
+]
