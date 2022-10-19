@@ -15,7 +15,15 @@ services:
       - hostMongo=18.212.28.93
     networks:
       - proyecto
-
+  frontend:
+    image: curtex19/redes2-frontend
+    container_name: frontend-proyecto
+    ports: 
+      - '80:80'
+    depends_on:
+      - backend
+    networks:
+      - proyecto
 networks:
   proyecto:
     name: "proyecto"
