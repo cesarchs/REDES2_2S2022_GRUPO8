@@ -1,0 +1,14 @@
+FROM node:17-alpine AS node
+WORKDIR /api-front
+COPY . .
+RUN npm install
+
+# ENV REACT_APP_IP_BALANCER=34.117.157.173
+# ENV REACT_APP_PORT_BALANCER=80
+
+EXPOSE 3000
+
+RUN npm run build
+FROM nginx:1.21.6-alpine
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=node /api-front/build/ /usr/share/nginx/html
