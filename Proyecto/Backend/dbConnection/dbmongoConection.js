@@ -5,7 +5,8 @@ export const mongodb = async () => {
   try {
     const db = await mongoose.connect(config.mongo.uri,{
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        authSource: 'admin'
     });
 
     console.log(`Mongodb connect ${db.connection.host}`)

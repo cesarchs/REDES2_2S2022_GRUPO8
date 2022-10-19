@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  backend:
+    image: curtex19/redes2-backend
+    container_name: backend-proyecto
+    ports: 
+      - '8080:8080'
+    environment:
+      - HOST=18.212.28.93
+      - PORT=8080
+      - NAME="api-node"
+      - adminMongo=admin-g8
+      - passwordMongo=redes2-p
+      - hostMongo=18.212.28.93
+    networks:
+      - proyecto
+
+networks:
+  proyecto:
+    name: "proyecto"
+    driver: bridge
