@@ -19,9 +19,9 @@ services:
     image: curtex19/redes2-frontend
     container_name: frontend-proyecto
     ports: 
-      - '80:80'
+      - '80:3000'
     environment:
-      - REACT_APP_HOST=localhost
+      - REACT_APP_HOST=54.196.145.13
       - REACT_APP_PORT=8080
     depends_on:
       - backend
