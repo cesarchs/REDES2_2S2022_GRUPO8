@@ -7,12 +7,12 @@ services:
     ports: 
       - '8080:8080'
     environment:
-      - HOST=18.212.28.93
+      - HOST=localhost
       - PORT=8080
       - NAME="api-node"
       - adminMongo=admin-g8
       - passwordMongo=redes2-p
-      - hostMongo=18.212.28.93
+      - hostMongo=54.152.33.31
     networks:
       - proyecto
   frontend:
@@ -20,6 +20,9 @@ services:
     container_name: frontend-proyecto
     ports: 
       - '80:80'
+    environment:
+      - REACT_APP_HOST=localhost
+      - REACT_APP_PORT=8080
     depends_on:
       - backend
     networks:
