@@ -25,8 +25,6 @@ export function Economia(){
     let ucron = data.filter(obj => obj.moneda === "UcronCoin");
     let fechas =  ucron.map(obj => obj.Fecha);
 
-    console.log(euro);
-
     return(
         <div className="container">
             <Header/>

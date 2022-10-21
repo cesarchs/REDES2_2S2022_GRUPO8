@@ -6,7 +6,7 @@ export function Header() {
     return(
         <div className="container mt-2">
             <nav className="navbar navbar-inverse navbar-expand-lg navbar-light bg-light p-3 shadow">
-                <a className="navbar-brand" href="/">UCRÓN</a>
+                <a className="navbar-brand" href="/">UCRÓN {process.env.REACT_APP_PC}</a>
                 <button className="navbar-toggler" type="button">
                     <span className="navbar-toggler-icon"></span>
                 </button>

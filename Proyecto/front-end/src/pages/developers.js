@@ -17,8 +17,7 @@ export function Developers(){
         .then(res => res.json())
         .then(data => setData(data));
     }, []);
-
-    console.log(data)
+    
     return(
         <div>
             <Header/>

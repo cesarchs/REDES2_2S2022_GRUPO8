@@ -20,8 +20,6 @@ export function Admins(){
         .then(data => setData(data));
     }, []);
 
-    console.log(data)
-
     return(
         <div>
             <Header/>
