@@ -15,8 +15,8 @@ export function Header() {
                         <Link to="/" className="nav-item nav-link">Home</Link>
                         <Link to="/admins" className="nav-item nav-link">Administradores</Link>
                         <Link to="/developers" className="nav-item nav-link">Desarrolladores</Link>
-                        <Link to="/deptos" className="nav-item nav-link">Departamentos</Link>
-                        <Link to="/economico" className="nav-item nav-link">Económico</Link>
+                        <Link to="/deptos" className="nav-item nav-link">Función Pública</Link>
+                        <Link to="/economia" className="nav-item nav-link">Económico</Link>
                     </div>
                 </div>
             </nav>

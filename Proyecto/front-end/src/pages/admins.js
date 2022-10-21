@@ -1,11 +1,27 @@
 import React from "react";
-
+import { useEffect, useState } from 'react';
 import {BsFillCaretRightSquareFill, BsFillCaretLeftSquareFill} from "react-icons/bs";
 
 import { Header } from "../components/header";
 import { Card } from "../components/card";
 
 export function Admins(){
+
+    const [data, setData] = useState([])    
+    
+    useEffect(() => {        
+        const reqOps = {
+            method: 'GET',            
+            headers: { 'Content-Type': 'application/json' }
+        };
+        
+        fetch(`http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/admin`, reqOps)
+        .then(res => res.json())
+        .then(data => setData(data));
+    }, []);
+
+    console.log(data)
+
     return(
         <div>
             <Header/>
@@ -15,19 +31,55 @@ export function Admins(){
                         
                         <div className="carousel-item active">
                             <div className="row">
-                                <Card img={"https://dummyimage.com/400x400/000/fff"} titulo={"XDXDXDXD"} descripcion={"With supporting text below as a natural lead-in to additional content."}/>
-                                <Card img={"https://dummyimage.com/400x400/000/fff"} titulo={"XDXDXDXD"} descripcion={"With supporting text below as a natural lead-in to additional content."}/>
-                                <Card img={"https://dummyimage.com/400x400/000/fff"} titulo={"XDXDXDXD"} descripcion={"With supporting text below as a natural lead-in to additional content."}/>
+                                {
+                                    data.map( (obj, index) => {
+                                        if(index < 3){
+                                            return(
+                                                <Card img={obj.img} 
+                                                    titulo={obj.nombreAdmin} 
+                                                    descripcion={obj.descripcion}
+                                                />
+                                            );
+                                        }
+                                        return<div></div>;
+                                    })
+                                }
                             </div>
                         </div>
-
                         <div className="carousel-item">
                             <div className="row">
-                                <Card img={"https://dummyimage.com/400x400/000/fff"} titulo={"222222"} descripcion={"With supporting text below as a natural lead-in to additional content."}/>
-                                <Card img={"https://dummyimage.com/400x400/000/fff"} titulo={"222222"} descripcion={"With supporting text below as a natural lead-in to additional content."}/>
+                                {
+                                    data.map( (obj, index) => {
+                                        if(index > 2 && index < 6){
+                                            return(
+                                                <Card img={obj.img} 
+                                                    titulo={obj.nombreAdmin} 
+                                                    descripcion={obj.descripcion}
+                                                />
+                                            )
+                                        }
+                                        return<div></div>;
+                                    })
+                                }
                             </div>
                         </div>
-                        
+                        <div className="carousel-item">
+                            <div className="row">
+                                {
+                                    data.map( (obj, index) => {
+                                        if(index > 5){
+                                            return(
+                                                <Card img={obj.img} 
+                                                    titulo={obj.nombreAdmin} 
+                                                    descripcion={obj.descripcion}
+                                                />
+                                            )
+                                        }
+                                        return<div></div>;
+                                    })
+                                }
+                            </div>
+                        </div>
                     </div>
 
                     <div className="container d-flex justify-content-center ">

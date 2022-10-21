@@ -1,11 +1,24 @@
 import React from "react";
-
 import {BsFillCaretRightSquareFill, BsFillCaretLeftSquareFill} from "react-icons/bs";
-
+import { useEffect, useState } from 'react';
 import { Header } from "../components/header";
 import { Card } from "../components/card";
 
 export function Developers(){
+    const [data, setData] = useState([])    
+    
+    useEffect(() => {        
+        const reqOps = {
+            method: 'GET',            
+            headers: { 'Content-Type': 'application/json' }
+        };
+        
+        fetch(`http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/api/dev`, reqOps)
+        .then(res => res.json())
+        .then(data => setData(data));
+    }, []);
+
+    console.log(data)
     return(
         <div>
             <Header/>
@@ -13,18 +26,40 @@ export function Developers(){
                 <div id="carouselExampleControls" className="carousel slide" data-ride="carousel" >
                     <div className="carousel-inner mt-3">
                         
-                        <div className="carousel-item active">
+                    <div className="carousel-item active">
                             <div className="row">
-                                <Card img={"https://dummyimage.com/400x400/000/fff"} titulo={"XDXDXDXD"} descripcion={"With supporting text below as a natural lead-in to additional content."}/>
-                                <Card img={"https://dummyimage.com/400x400/000/fff"} titulo={"XDXDXDXD"} descripcion={"With supporting text below as a natural lead-in to additional content."}/>
-                                <Card img={"https://dummyimage.com/400x400/000/fff"} titulo={"XDXDXDXD"} descripcion={"With supporting text below as a natural lead-in to additional content."}/>
+                                {
+                                    data.map( (obj, index) => {
+                                        if(index < 3){
+                                            return(
+                                                <Card img={obj.photo} 
+                                                    titulo={obj.nombre} 
+                                                    descripcion={obj.carnet +" - "+obj.rol}
+                                                    curso={obj.curso}
+                                                />
+                                            );
+                                        }
+                                        return<div></div>;
+                                    })
+                                }
                             </div>
                         </div>
-
                         <div className="carousel-item">
                             <div className="row">
-                                <Card img={"https://dummyimage.com/400x400/000/fff"} titulo={"222222"} descripcion={"With supporting text below as a natural lead-in to additional content."}/>
-                                <Card img={"https://dummyimage.com/400x400/000/fff"} titulo={"222222"} descripcion={"With supporting text below as a natural lead-in to additional content."}/>
+                                {
+                                    data.map( (obj, index) => {
+                                        if(index > 2){
+                                            return(
+                                                <Card img={obj.photo} 
+                                                    titulo={obj.nombre} 
+                                                    descripcion={obj.carnet +" - "+obj.rol}
+                                                    curso={obj.curso}
+                                                />
+                                            )
+                                        }
+                                        return<div></div>;
+                                    })
+                                }
                             </div>
                         </div>
                         
