@@ -16,7 +16,7 @@ Dentro de cada una de las instancias se encuentra desplegada una aplicación hec
 Toda esta infraestructura se desplegó en el proveedor de la nube AWS debido a la gran cantidad de servicios que proveen y la forma en la que estos se relacionan entre sí.
 
 ## Route53
-
+[Router53](./imgs/Router53.png)
 
 ## Load Balancer
 
