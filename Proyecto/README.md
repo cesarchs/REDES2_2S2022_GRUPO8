@@ -16,12 +16,13 @@ Dentro de cada una de las instancias se encuentra desplegada una aplicación hec
 Toda esta infraestructura se desplegó en el proveedor de la nube AWS debido a la gran cantidad de servicios que proveen y la forma en la que estos se relacionan entre sí.
 
 ## Route53
-[Router53](./imgs/Router53.png)
+<img src="./imgs/Router53.PNG">
 
 ## Load Balancer
-
+<img src="./imgs/load-alancer.PNG">
 
 ## Target Group
+<img src="./imgs/target.PNG">
 
 
 ## Servidor
@@ -185,3 +186,18 @@ networks:
 
 # Interfaz Gráfica 
 
+## HOME
+<img src="./imgs/home.PNG">
+
+## ADMINISTRADOR
+<img src="./imgs/admin.PNG">
+
+## DESARROLLADOR
+<img src="./imgs/desarrollador.PNG">
+
+## FUNCION PUBLICA
+<img src="./imgs/funcion-publica.PNG">
+
+## ECONOMIA
+<img src="./imgs/economia-linea.PNG">
+<img src="./imgs/economia-bar.PNG">
