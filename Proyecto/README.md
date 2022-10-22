@@ -155,7 +155,7 @@ sudo systemctl restart nginx
 ## Servidor
 Para el despliegue del servidor web se hizo uso del archivo [Dockerfile](./Backend/Dockerfile) para poder generar una imagen en [Docker Hub](https://hub.docker.com/) y sea más sencillo este despliegue, solamente con configurar las variables de entorno necesarias y ejecutar un comando se levanté todo automáticamente. 
 
-<img src="./imgs/docker-back.png">
+<img src="./imgs/docker-back.PNG">
 
 Se utilizó un archivo de docker-compose para que este sea el encargado de levantar cada uno de los respectivos componentes con su propia red y así poder ser administradas, el archivo tiene la siguiente estructura.
 
