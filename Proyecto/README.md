@@ -19,7 +19,7 @@ Toda esta infraestructura se desplegó en el proveedor de la nube AWS debido a l
 <img src="./imgs/Router53.PNG">
 
 ## Load Balancer
-<img src="./imgs/load-alancer.PNG">
+<img src="./imgs/load-balancer.PNG">
 
 ## Target Group
 <img src="./imgs/target.PNG">
