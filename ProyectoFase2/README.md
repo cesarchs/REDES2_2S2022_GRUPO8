@@ -189,11 +189,21 @@ para la implementacion de https se utilizo Let's Encrypt
 <img src="./imgs/httpsImg.PNG">
 
 ## SEGURIDAD
-Creacion de politicas de seguridad para el trafico a traves de ACLs
+### Creacion de politicas de seguridad para el trafico a traves de ACLs
 <img src="./imgs/ACL.PNG">
 
-### Seguridad del Front
+### Seguridad del frontEnd
 <img src="./imgs/seguridadfront.PNG">
+
+### Seguridad del backEnd
+<img src="./imgs/seguridadBack.PNG">
+
+### Seguridad del loadBalancer
+<img src="./imgs/seguridadBalancer.PNG">
+
+### tabla de subnet's, Rango de direcciones 
+<img src="./imgs/rangoDirecciones.PNG">
+
 
 # Interfaz Gráfica 
 
