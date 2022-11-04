@@ -185,9 +185,15 @@ networks:
 ```
 
 ## HTTPS
-
+para la implementacion de https se utilizo Let's Encrypt
 <img src="./imgs/httpsImg.PNG">
 
+## SEGURIDAD
+Creacion de politicas de seguridad para el trafico a traves de ACLs
+<img src="./imgs/ACL.PNG">
+
+### Seguridad del Front
+<img src="./imgs/seguridadfront.PNG">
 
 # Interfaz Gráfica 
 
