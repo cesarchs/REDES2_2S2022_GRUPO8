@@ -186,8 +186,8 @@ networks:
 
 ## HTTPS
 
-<img src="./imgs/https.PNG">
-```
+<img src="./imgs/httpsImg.PNG">
+
 
 # Interfaz Gráfica 
 
