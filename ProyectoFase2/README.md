@@ -184,6 +184,11 @@ networks:
     driver: bridge
 ```
 
+## HTTPS
+
+<img src="./imgs/https.PNG">
+```
+
 # Interfaz Gráfica 
 
 ## HOME
