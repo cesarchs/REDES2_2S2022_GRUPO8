@@ -1,0 +1,139 @@
+-ACTUALIZAR-
+sudo apt update
+sudo apt upgrade
+
+-INSTALAR NGINX-
+sudo apt install nginx
+
+--VER LA LISTA DE ALLOW--
+sudo ufw app list
+
+--HABILITAR DE ALLOW--
+sudo ufw allow 'Nginx HTTP'
+-- sudo ufw enable
+systemctl status nginx
+
+--BLOQUE DE DOMINIO--
+
+
+-PERMISOS Y CREACION DE CARPETA-
+sudo mkdir -p /var/www/economia.ucron2.ml/html
+sudo chown -R $USER:$USER /var/www/economia.ucron2.ml/html
+sudo chown -R 755 /var/www/economia.ucron2.ml
+
+sudo mkdir -p /var/www/ucron2.ml/html
+sudo chown -R $USER:$USER /var/www/ucron2.ml/html
+sudo chown -R 755 /var/www/ucron2.ml
+
+sudo mkdir -p /var/www/funcionpublica.ucron2.ml/html
+sudo chown -R $USER:$USER /var/www/funcionpublica.ucron2.ml/html
+sudo chown -R 755 /var/www/funcionpublica.ucron2.ml
+
+
+
+--CREAR PAG HTML--
+sudo cp index.html /var/www/funcionpublica.ucron2.ml/html/
+sudo cp asset-manifest.json /var/www/funcionpublica.ucron2.ml/html/
+sudo cp -r static /var/www/funcionpublica.ucron2.ml/html/
+
+sudo cp index.html /var/www/economia.ucron2.ml/html/
+sudo cp asset-manifest.json /var/www/economia.ucron2.ml/html/
+sudo cp -r static /var/www/economia.ucron2.ml/html/
+
+sudo cp index.html /var/www/ucron2.ml/html/
+sudo cp asset-manifest.json /var/www/ucron2.ml/html/
+sudo cp -r static /var/www/ucron2.ml/html/
+
+
+-CREAR ARCHIVO PARA HABILITAR EL SITIO Y QUE ESCUCHE EN PUERTO 80-
+
+sudo nano /etc/nginx/sites-available/economia.ucron2.ml
+
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/economia.ucron2.ml/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name www.economia.ucron2.ml economia.ucron2.ml;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+
+sudo nano /etc/nginx/sites-available/funcionpublica.ucron2.ml
+
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/funcionpublica.ucron2.ml/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name www.funcionpublica.ucron2.ml funcionpublica.ucron2.ml;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+
+sudo nano /etc/nginx/sites-available/ucron2.ml
+
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/ucron2.ml/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name www.ucron2.ml ucron2.ml;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+
+-------------------------------------------
+
+
+-HABILITAR EL SITIO QUE SE CREO-
+sudo ln -s /etc/nginx/sites-available/funcionpublica.ucron2.ml /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/economia.ucron2.ml /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/ucron2.ml /etc/nginx/sites-enabled/
+
+-VERIFICAR SI TODO ESTA BIEN-
+sudo nginx -t  (mensaje de successful)
+
+-REINICIAR NGINX-
+sudo systemctl restart nginx
+
+
+
+--CERTIFICADO SSL
+
+sudo apt install certbot python3-certbot-nginx
+sudo ufw allow 'Nginx Full'
+sudo ufw delete allow 'Nginx HTTP'
+
+sudo certbot --nginx -d ucron2.ml
+
+(ingresar correo) -- enriquechiu12@gmail.com
+
+--DIRIGIR HTTP A HTTPS
+sudo nano /etc/nginx/sites-available/ucron2.ml
+
+*AGREGAR*
+
+server {
+    listen   80;
+    server_name  www.ucron2.ml ucron2.ml;
+
+    return 301 https://ucron2.ml$request_uri;
+}
+
+sudo systemctl restart nginx
